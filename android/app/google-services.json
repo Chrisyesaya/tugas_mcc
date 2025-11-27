@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "22940883304",
+    "firebase_url": "https://tugas-mcc-fb241-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "tugas-mcc-fb241",
+    "storage_bucket": "tugas-mcc-fb241.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22940883304:android:32a0c3a7130fa97beededd",
+        "android_client_info": {
+          "package_name": "com.example.tugas_mcc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-RvaFAjj7OAbdwFk-UgEBL_qqP6Zfewg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
