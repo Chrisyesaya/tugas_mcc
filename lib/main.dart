@@ -1,12 +1,10 @@
-// lib/main.dart
-
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 // Pastikan file ini ada di firebase/firebase_options.dart
-import 'firebase/firebase_options.dart'; 
+import 'firebase/firebase_options.dart';
 import 'screen/home.dart';
 import 'screen/login.dart';
 
@@ -36,15 +34,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // 1. STATE TEMA: Default adalah Dark Mode
   ThemeMode _themeMode = ThemeMode.dark;
-
-  // 2. FUNGSI TOGGLE TEMA (Callback)
-  void _toggleTheme() {
-    setState(() {
-      _themeMode = _themeMode == ThemeMode.dark 
-          ? ThemeMode.light 
-          : ThemeMode.dark;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +76,6 @@ class _MyAppState extends State<MyApp> {
       scaffoldBackgroundColor: const Color(0xFF121212),
     );
 
-
     return MaterialApp(
       title: 'Reads App',
       debugShowCheckedModeBanner: false,
@@ -109,10 +97,7 @@ class _MyAppState extends State<MyApp> {
 
           if (snapshot.hasData) {
             // KIRIM STATE DAN CALLBACK KE HOMESCREEN setelah login sukses
-            return HomeScreen(
-              currentThemeMode: _themeMode,
-              onThemeToggle: _toggleTheme,
-            );
+            return HomeScreen();
           }
 
           // Kirim ke LoginScreen jika belum login
