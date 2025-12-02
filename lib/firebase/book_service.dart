@@ -46,4 +46,25 @@ class BookService {
     // Cek apakah key bookId ada dalam Map ownedBooks
     return ownedBooks.containsKey(bookId);
   }
+  
+  // FUNGSI BARU: Menambahkan buku ke database
+  Future<void> addBook(Map<String, dynamic> bookData) async {
+    // Menggunakan .push() untuk membuat ID unik otomatis dari Firebase
+    final newBookRef = _db.child('books').push();
+    
+    // Pastikan title_lower ada untuk pencarian
+    String title = bookData['title'] as String? ?? "Untitled";
+    bookData['title_lower'] = title.toLowerCase();
+
+    // Set data buku baru
+    await newBookRef.set(bookData);
+    
+    // Opsional: Langsung jadikan buku ini dimiliki oleh user yang menambahkan
+    String? uid = _auth.currentUser?.uid;
+    if (uid != null) {
+        await _db.child('users').child(uid).child('owned_books').update({
+            newBookRef.key!: true, // newBookRef.key berisi ID unik yang baru dibuat
+        });
+    }
+  }
 }

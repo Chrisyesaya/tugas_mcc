@@ -15,6 +15,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
   bool _isLoading = false;
+  // State variable to control password visibility
   bool _obscureText = true;
 
   Future<void> _login() async {
@@ -72,19 +73,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        "Reads Login",
+                      const Text(
+                        "Reads - Login",
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.bold,
                           color: Colors.black,
-                          shadows: [
-                            Shadow(
-                              color: Colors.black.withOpacity(0.5),
-                              blurRadius: 10.0,
-                              offset: const Offset(2, 2),
-                            ),
-                          ],
                         ),
                       ),
                       const SizedBox(height: 40),
@@ -110,10 +104,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           fillColor: Colors.grey.shade100,
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 15),
                       TextField(
                         controller: _passCtrl,
-                        obscureText: true,
+                        // Use the state variable to toggle visibility
+                        obscureText: _obscureText,
                         style: const TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                           labelText: "Password",
@@ -132,6 +127,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           filled: true,
                           fillColor: Colors.grey.shade100,
+                          // Toggle button
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.black54,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                          ),
                         ),
                       ),
                       const SizedBox(height: 30),
@@ -149,8 +158,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                                 elevation: 5,
                               ),
-                              child: const Text("LOGIN",
-                                  style: TextStyle(fontSize: 16)),
+                              child: const Text(
+                                "MASUK",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  // Made the text bold as requested
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                       const SizedBox(height: 20),
                       TextButton(
@@ -166,7 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(
                             color: Colors.blue,
                             fontSize: 14,
-                            decoration: TextDecoration.underline,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),

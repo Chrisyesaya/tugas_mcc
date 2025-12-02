@@ -35,7 +35,7 @@ class _MainNavState extends State<MainNav> {
         type: BottomNavigationBarType.fixed,
         onTap: (index) => setState(() => _currentIndex = index),
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Beranda"),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: "Cari"),
           BottomNavigationBarItem(icon: Icon(Icons.book), label: "Koleksi"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
