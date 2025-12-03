@@ -69,7 +69,7 @@ class BookDetailScreen extends StatelessWidget {
       body: StreamBuilder<DatabaseEvent>(
         stream: service.getUserData(),
         builder: (context, snapshot) {
-          // Cek kepemilikan
+
           Map<dynamic, dynamic>? ownedMap;
           if (snapshot.hasData && snapshot.data!.snapshot.value != null) {
             final val = snapshot.data!.snapshot.value as Map<dynamic, dynamic>;
@@ -85,18 +85,17 @@ class BookDetailScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // 2. Gantikan Icon placeholder dengan Widget baru untuk Cover
                 Center(child: _buildCoverImage(coverUrl)),
                 const SizedBox(height: 20),
                 Text(bookData['title'], style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 Text("Penulis: ${bookData['author'] ?? '-'}", style: const TextStyle(fontSize: 16, color: Colors.grey)),
                 const SizedBox(height: 20),
-                Expanded( // Agar deskripsi tidak menabrak tombol
+                Expanded(
                   child: SingleChildScrollView(
                     child: Text(bookData['description'] ?? "Tidak ada deskripsi."),
                   ),
                 ),
-                const SizedBox(height: 20), // Tambahkan sedikit ruang sebelum tombol
+                const SizedBox(height: 20),
                 
                 SizedBox(
                   width: double.infinity,

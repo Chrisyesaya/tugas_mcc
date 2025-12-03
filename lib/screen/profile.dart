@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart'; // Import Firebase Realtime Database
 import 'login.dart'; // Digunakan untuk navigasi setelah logout
 
-// --- PROFILE SCREEN (VERSI DITINGKATKAN DENGAN DETAIL) ---
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 

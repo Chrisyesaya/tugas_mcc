@@ -36,7 +36,7 @@ class _VideoBackgroundState extends State<VideoBackground> {
             child: SizedBox.expand(
               child: ColorFiltered(
                 colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.5), // Darker overlay
+                  Colors.black.withOpacity(0.2), // Darker overlay
                   BlendMode.darken,
                 ),
                 child: FittedBox(

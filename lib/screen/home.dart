@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
-import '../firebase/book_service.dart';
 import 'book_detail.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,7 +9,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final BookService bookService = BookService();
     final User? currentUser = FirebaseAuth.instance.currentUser;
 
     Widget appBarTitle() {
@@ -168,14 +166,9 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         body: StreamBuilder<DatabaseEvent>(
-          stream: bookService.getTrendingBooks(),
+          stream: FirebaseDatabase.instance.ref('books').onValue,
           builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
-
             if (!snapshot.hasData || snapshot.data?.snapshot.value == null) {
-              // Masih tampilkan TabBarView kosong tapi beri pesan
               return TabBarView(
                 children: List.generate(
                   tabs.length,
@@ -184,7 +177,6 @@ class HomeScreen extends StatelessWidget {
               );
             }
 
-            // Parsing Map RTDB ke List — sesuai struktur yang kamu kirim
             final Map<dynamic, dynamic> booksMap =
                 snapshot.data!.snapshot.value as Map<dynamic, dynamic>;
 

@@ -15,7 +15,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
   bool _isLoading = false;
-  // State variable to control password visibility
   bool _obscureText = true;
 
   Future<void> _login() async {
@@ -44,12 +43,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: Stack(
         children: [
-          // Video Background
           const VideoBackground(),
 
-          // Content Overlay
           Container(
-            color: Colors.black.withOpacity(0.3), // Semi-transparent overlay
+            color: Colors.black.withOpacity(0.3),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Center(
@@ -107,7 +104,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(height: 15),
                       TextField(
                         controller: _passCtrl,
-                        // Use the state variable to toggle visibility
                         obscureText: _obscureText,
                         style: const TextStyle(color: Colors.black),
                         decoration: InputDecoration(
@@ -162,7 +158,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 "MASUK",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  // Made the text bold as requested
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),

@@ -156,8 +156,41 @@ class CollectionScreen extends StatelessWidget {
                   return ListTile(
                     leading: const Icon(Icons.library_books, color: Colors.green),
                     title: Text(data['title']),
-                    subtitle:
-                        Text("Oleh: ${data['author'] ?? 'Anonim'}"),
+                    subtitle: Text("Oleh: ${data['author'] ?? 'Anonim'}"),
+
+                    // === TOMBOL HAPUS DI SINI ===
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () async {
+                        final confirm = await showDialog(
+                          context: context,
+                          builder: (_) => AlertDialog(
+                            title: const Text("Hapus Buku"),
+                            content: Text("Yakin ingin menghapus '${data['title']}' dari koleksi?"),
+                            actions: [
+                              TextButton(
+                                onPressed: () => Navigator.pop(context, false),
+                                child: const Text("Batal"),
+                              ),
+                              ElevatedButton(
+                                onPressed: () => Navigator.pop(context, true),
+                                child: const Text("Hapus"),
+                              ),
+                            ],
+                          ),
+                        );
+
+                        if (confirm == true) {
+                          await service.removeOwnedBook(data['id']);
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Buku '${data['title']}' dihapus.")),
+                            );
+                          }
+                        }
+                      },
+                    ),
+
                     onTap: () {
                       Navigator.push(
                         context,
