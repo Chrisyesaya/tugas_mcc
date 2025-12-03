@@ -32,7 +32,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  // 1. STATE TEMA: Default adalah Dark Mode
   ThemeMode _themeMode = ThemeMode.dark;
 
   @override
@@ -56,7 +55,6 @@ class _MyAppState extends State<MyApp> {
       scaffoldBackgroundColor: Colors.white,
     );
 
-    // --- DEFINISI TEMA DARK ---
     final ThemeData darkTheme = ThemeData(
       colorScheme: ColorScheme.fromSeed(
         seedColor: Colors.blueAccent,

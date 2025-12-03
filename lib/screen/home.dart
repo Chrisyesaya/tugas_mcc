@@ -1,4 +1,3 @@
-// home.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -34,7 +33,7 @@ class HomeScreen extends StatelessWidget {
           final String name = val?.toString() ?? "Pengguna";
 
           return Text(
-            "Selamat datang, $name!",
+            "Selamat datang, $name!", style: const TextStyle(color: Colors.white),
           );
         },
       );

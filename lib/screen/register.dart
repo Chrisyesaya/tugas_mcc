@@ -108,7 +108,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         const SizedBox(height: 30),
                         
-                        // --- EMAIL INPUT ---
                         TextField(
                           controller: _emailCtrl,
                           style: const TextStyle(color: Colors.black),
